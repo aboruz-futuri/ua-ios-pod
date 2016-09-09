@@ -101,7 +101,11 @@ extern NSString * const UAInboxMessageListUpdatedNotification;
  * Returns the list of messages on disk as an NSArray, filtered by the supplied predicate.
  * @param predicate The predicate to use as a filter over messages.
  */
+#if __has_feature(objc_generics)
 - (NSArray<UAInboxMessage *> *)messagesFilteredUsingPredicate:(NSPredicate *)predicate;
+#else
+- (NSArray *)messagesFilteredUsingPredicate:(NSPredicate *)predicate;
+#endif
 
 /**
  * Returns the number of messages currently in the inbox.
@@ -128,7 +132,11 @@ extern NSString * const UAInboxMessageListUpdatedNotification;
 /**
  * The list of messages on disk as an NSArray.
  */
-@property (nonatomic, readonly, strong) NSArray<UAInboxMessage *> *messages;
+#if __has_feature(objc_generics)
+@property (atomic, readonly, strong) NSArray<UAInboxMessage *> *messages;
+#else
+@property (atomic, readonly, strong) NSArray *messages;
+#endif
 
 /**
  * The number of messages that are currently unread or -1

@@ -36,8 +36,6 @@
  * UASituationBackgroundInteractiveButton, UASituationManualInvocation, and
  * UASituationAutomation
  *
- * Default predicate: Rejects foreground pushes with visible display options on iOS 10 and above
- *
  * Result value: nil
  *
  * Error: nil
